@@ -10,21 +10,16 @@ jobs:
     - name: Dotnet build
       uses: actions/setup-dotnet@v1
     - run: dotnet build
-    - name: Npm install and build
-      uses: actions/setup-node@v2
+    - uses: actions/setup-node@v2
       with:
           node-version: '16'
-    - run: cd DotnetTemplate.Web
-    - run: npm install
-    - run: npm run build
+    - name: Npm install and build      
+      run: cd DotnetTemplate.Web/
+      run: npm install
+      run: npm run build
     - name: Running Dotnet Tests
-      uses: actions/setup-dotnet@v1
-    - run: cd ..
-    - run: dotnet test
+      run: dotnet test
     - name: Running Dotnet Tests
-      uses: actions/setup-node@v2
-      with:
-          node-version: '16'
-    - run: cd DotnetTemplate.Web
-    - run: npm t
-    - run: npm run lint
+      run: cd DotnetTemplate.Web/
+      run: npm t
+      run: npm run lint
