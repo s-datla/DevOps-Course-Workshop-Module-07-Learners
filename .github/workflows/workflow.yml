@@ -6,9 +6,8 @@ jobs:
     name: Build and test
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Dotnet build
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v2    
+    - uses: actions/setup-dotnet@v1
     - run: dotnet build
     - uses: actions/setup-node@v2
       with:
