@@ -41,7 +41,7 @@ pipeline {
                     sh 'npm run lint'
                 }
                 dir('DotnetTemplate.Web/coverage'){
-                    publishCoverage adapters: [istanbulCoberturaAdapter(path: 'cobertura-coverage.xml', thresholds: [[thresholdTarget: 'Line', unhealthyThreshold: 90.0]])], sourceFileResolver: sourceFiles('NEVER_STORE')
+                    publishCoverage adapters: [coberturaAdapter(path: 'cobertura-coverage.xml', thresholds: [[thresholdTarget: 'Line', unhealthyThreshold: 90.0]])], sourceFileResolver: sourceFiles('NEVER_STORE')
                 }
             }
         }
