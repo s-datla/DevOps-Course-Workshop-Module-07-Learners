@@ -14,12 +14,14 @@ jobs:
       with:
           node-version: '16'
     - name: Npm install and build      
-      run: cd DotnetTemplate.Web/
-      run: npm install
-      run: npm run build
+      run: |
+        cd DotnetTemplate.Web/
+        npm install
+        npm run build
     - name: Running Dotnet Tests
       run: dotnet test
     - name: Running Dotnet Tests
-      run: cd DotnetTemplate.Web/
-      run: npm t
-      run: npm run lint
+      run: |
+        cd DotnetTemplate.Web/
+        npm t
+        npm run lint
