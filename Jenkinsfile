@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    environment {
+        DOTNET_CLI_HOME = "/tmp/dotnet_cli_home"
+    }
     stages {
         stage('DotNet Build') {
             agent {
@@ -14,7 +17,7 @@ pipeline {
                 docker { image 'node:14-alpine' }
             }
             steps {
-                sh 'cd DotnetTemplate.Web/'
+                dir 'DotnetTemplate.Web'
                 sh 'npm install'
                 sh 'npm run build'
             }
@@ -32,7 +35,7 @@ pipeline {
                 docker { image 'node:14-alpine' }
             }
             steps {
-                sh 'cd DotnetTemplate.Web/'
+                dir 'DotnetTemplate.Web'
                 sh 'npm t'
                 sh 'npm run lint'
             }
